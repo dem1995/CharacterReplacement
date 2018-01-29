@@ -3,9 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:CharacterReplacement"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <system:Double x:Key="LargeGroupFontSize">13</system:Double>
+        <system:Double x:Key="SmallGroupFontSize">11</system:Double>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -17,23 +22,23 @@
         </Grid.RowDefinitions>
 
 
-        <GroupBox Name="InputGroup" Header="Input" Grid.Row="0">
+        <GroupBox Name="InputGroup" Header="Input" FontSize="{StaticResource LargeGroupFontSize}" Grid.Row="0">
             <TextBox Name="TextInputBox" Text="{Binding InputText, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"/>
         </GroupBox>
 
-        <GroupBox Name="OutputGroup" Header="Output" Grid.Row="1">
+        <GroupBox Name="OutputGroup" Header="Output" FontSize="{StaticResource LargeGroupFontSize}" Grid.Row="1">
             <TextBox Name="OutputTextBox" Text="{Binding InputText, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
         </GroupBox>
 
-        <GroupBox Name="SettingsGroup" Header="Settings" Grid.Row="0" Grid.Column="1">
+        <GroupBox Name="SettingsGroup" Header="Settings" FontSize="{StaticResource LargeGroupFontSize}" Grid.Row="0" Grid.Column="1">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="3*"/>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+                
                 <TextBox Grid.Row="0" ToolTip="Enter the characters you want to be left in or taken out"/>
-
                 <Expander Grid.Row="1" Header="Parsing Options" Background="White">
                     <Canvas Background="White">
                         <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0.5 0.5 0.5 0.5">
@@ -46,10 +51,25 @@
                         </Border>
                     </Canvas>
                 </Expander>
+                <Button Grid.Row="2">Replace Characters</Button>
             </Grid>
         </GroupBox>
-        
-        
+
+        <GroupBox Name="ChangedElements" Header="Changed Elements" FontSize="{StaticResource LargeGroupFontSize}" Grid.Row="1" Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <GroupBox  Header="Characters Stripped" FontSize="{StaticResource SmallGroupFontSize}">
+                    <TextBox></TextBox>
+                </GroupBox>
+                <GroupBox Header="Characters Stripped" FontSize="{StaticResource SmallGroupFontSize}" Grid.Row="1">
+                    <TextBox></TextBox>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+
 
         <!--<Grid Grid.Column="0">
             <Grid.RowDefinitions>
