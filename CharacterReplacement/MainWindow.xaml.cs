@@ -23,6 +23,7 @@ namespace CharacterReplacement
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new CharacterReplacementViewModel();
         }
     }
 }
