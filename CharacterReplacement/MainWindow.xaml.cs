@@ -25,5 +25,15 @@ namespace CharacterReplacement
             InitializeComponent();
             this.DataContext = new CharacterReplacementViewModel();
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextInputBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
